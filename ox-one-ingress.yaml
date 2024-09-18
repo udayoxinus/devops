@@ -1,0 +1,88 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ox-one
+  namespace: default
+spec:
+  rules:
+  - host: auth.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: accounts-spotlight-main-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: staging-auth.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: accounts-spotlight-staging-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: id.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: kratos-spotlight-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: staging-id.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: kratos-spotlight-staging-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: core.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: core-spotlight-main-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: staging-core.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: core-spotlight-staging-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: core-admin.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: web-core-oxinus-production-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: staging-core-admin.ox.one
+    http:
+      paths:
+      - backend:
+          service:
+            name: web-core-oxinus-staging-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
